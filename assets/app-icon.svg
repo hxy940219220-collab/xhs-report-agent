@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="90" x2="900" y2="940" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#26342E"/>
+      <stop offset="1" stop-color="#111815"/>
+    </linearGradient>
+    <filter id="shadow" x="130" y="100" width="790" height="850" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="34" stdDeviation="30" flood-color="#07100C" flood-opacity="0.42"/>
+    </filter>
+    <linearGradient id="paper" x1="320" y1="210" x2="690" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#F1EEE5"/>
+    </linearGradient>
+  </defs>
+  <rect x="52" y="52" width="920" height="920" rx="218" fill="url(#bg)"/>
+  <path d="M177 322C218 195 341 118 493 118C649 118 785 196 848 327" fill="none" stroke="#3A4C43" stroke-width="14" stroke-linecap="round" opacity="0.65"/>
+  <g filter="url(#shadow)">
+    <path d="M256 194H640L800 354V817C800 851 772 878 738 878H256C222 878 194 851 194 817V256C194 222 222 194 256 194Z" fill="url(#paper)"/>
+  </g>
+  <path d="M640 194L800 354H691C663 354 640 331 640 303V194Z" fill="#E8553E"/>
+  <path d="M640 194V303C640 331 663 354 691 354H800" fill="none" stroke="#BD3928" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="280" y="310" width="224" height="30" rx="15" fill="#E8553E"/>
+  <rect x="280" y="382" width="390" height="24" rx="12" fill="#26342E" opacity="0.9"/>
+  <rect x="280" y="430" width="326" height="22" rx="11" fill="#26342E" opacity="0.32"/>
+  <rect x="280" y="476" width="356" height="22" rx="11" fill="#26342E" opacity="0.22"/>
+  <path d="M291 706L374 624L449 670L546 560L647 606L708 516" fill="none" stroke="#E8553E" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="374" cy="624" r="21" fill="#26342E"/>
+  <circle cx="546" cy="560" r="21" fill="#26342E"/>
+  <circle cx="708" cy="516" r="21" fill="#26342E"/>
+  <rect x="280" y="770" width="420" height="20" rx="10" fill="#26342E" opacity="0.18"/>
+</svg>

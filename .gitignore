@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+dist/
+release/
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
+
+# Local credentials, browser sessions, and generated publishing payloads.
+.local-data/
+.xhs-browser-profile/
+publish-payloads/
+playwright-report/
+test-results/

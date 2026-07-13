@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-12T18:30:00+08:00",
+  "title": "Design System: 报告观察家",
+  "extensions": {
+    "colorMeta": {
+      "coral": { "role": "primary", "displayName": "编辑珊瑚红", "canonical": "oklch(62% 0.18 32)", "tonalRamp": ["#3b1712", "#6d241a", "#a43829", "#e6513b", "#ed806d", "#f3aa9d", "#f8d2cb", "#fdf2ef"] },
+      "forest": { "role": "neutral", "displayName": "深林墨色", "canonical": "oklch(30% 0.03 155)", "tonalRamp": ["#101713", "#23332c", "#3c5046", "#61736a", "#89978f", "#b2bbb6", "#dce1de", "#f3f5f4"] },
+      "cover-lilac": { "role": "secondary", "displayName": "雾紫纸张", "canonical": "oklch(84% 0.045 305)", "tonalRamp": ["#251e2d", "#3f324c", "#5d486e", "#7d6690", "#9f88b1", "#c1acd0", "#d9c8e4", "#f4edf7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Editorial Display", "purpose": "上传首页与封面主标题。" },
+      "body": { "displayName": "Working Copy", "purpose": "正文编辑与证据阅读。" }
+    },
+    "shadows": [
+      { "name": "cover-object", "value": "0 16px 34px rgba(42,54,47,.15)", "purpose": "只用于封面实体预览。" }
+    ],
+    "motion": [
+      { "name": "state-ease", "value": "220ms cubic-bezier(.16,1,.3,1)", "purpose": "选择、展开和悬停状态。" }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "1040px" },
+      { "name": "mobile", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "下一步与导出的主操作。",
+      "html": "<button class=\"ds-btn-primary\">下一步</button>",
+      "css": ".ds-btn-primary{height:42px;padding:0 15px;border:1px solid #b93828;border-radius:9px;background:#e6513b;color:#fff;font:700 13px 'Avenir Next','PingFang SC',sans-serif;transition:background 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#d74732}.ds-btn-primary:focus-visible{outline:3px solid rgba(230,81,59,.22);outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "标题编辑输入框。",
+      "html": "<input class=\"ds-input\" value=\"健康饮料市场，正在换一种增长方式\" />",
+      "css": ".ds-input{width:100%;height:39px;padding:0 11px;border:1px solid #d5dad6;border-radius:8px;background:#fff;color:#1d211f;font:400 14px 'Avenir Next','PingFang SC',sans-serif}.ds-input:focus-visible{outline:3px solid rgba(230,81,59,.22);outline-offset:2px}"
+    },
+    {
+      "name": "History Navigation",
+      "kind": "nav",
+      "description": "深墨色创作台历史任务。",
+      "html": "<nav class=\"ds-nav\"><strong>报告观察家</strong><button>健康饮料市场趋势</button></nav>",
+      "css": ".ds-nav{width:240px;padding:18px;background:#23332c;color:#f5f7f4;font:600 13px 'Avenir Next','PingFang SC',sans-serif}.ds-nav button{width:100%;margin-top:16px;padding:12px;border:0;border-radius:8px;background:#2b3932;color:#fff;text-align:left}.ds-nav button:focus-visible{outline:2px solid #e6513b;outline-offset:2px}"
+    },
+    {
+      "name": "Source Chip",
+      "kind": "chip",
+      "description": "封面中的来源元信息。",
+      "html": "<span class=\"ds-chip\">来源 / 炼丹炉</span>",
+      "css": ".ds-chip{display:inline-flex;padding:8px 18px;border-radius:999px;background:#352846;color:#f4edf7;font:700 12px 'Avenir Next','PingFang SC',sans-serif;letter-spacing:.04em}"
+    },
+    {
+      "name": "Editorial Cover",
+      "kind": "custom",
+      "description": "品牌签名式 3:4 报告封面。",
+      "html": "<article class=\"ds-cover\"><header>行业研报　前沿精选　洞察趋势 <b>报告观察家</b></header><small>来源 / RESEARCH</small><h1>健康饮料市场<br>正在换一种增长方式</h1><footer><strong>42P</strong><span>把复杂数据，读成有用判断</span></footer></article>",
+      "css": ".ds-cover{width:270px;aspect-ratio:3/4;padding:26px;background:#d9c8e4;color:#352846;font-family:'PingFang SC',sans-serif}.ds-cover header{display:flex;justify-content:space-between;font-size:8px}.ds-cover header b{font-size:10px}.ds-cover small{display:inline-block;margin-top:76px;padding:6px 12px;border-radius:99px;background:#352846;color:#f4edf7}.ds-cover h1{margin:18px 0 0;font-size:28px;line-height:1.18;letter-spacing:-.04em}.ds-cover footer{margin-top:82px;padding-top:14px;border-top:1px solid #352846;display:flex;align-items:end;justify-content:space-between}.ds-cover footer strong{font-size:42px}.ds-cover footer span{max-width:100px;font-size:9px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "编辑部的样刊桌",
+    "overview": "界面服务于高频、连续的内容生产，安静、清楚、可靠；封面像一份由独立编辑部出版的行业刊物，有明确栅格、强字级和少量印刷细节。",
+    "keyCharacteristics": ["克制的产品壳，鲜明的编辑封面", "纸张色、墨色与单一强调色", "状态反馈直接"],
+    "rules": [
+      { "name": "Ink Economy", "body": "一个界面只允许一个行动强调色；一个封面只允许一个主墨色和一个小面积辅助色。", "section": "colors" },
+      { "name": "Human Line Break", "body": "封面标题按语义和视觉宽度换行，禁止机械切字。", "section": "typography" }
+    ],
+    "dos": ["Do 用网格、字级和留白建立封面辨识度。", "Do 让来源、主题、页数和品牌署名各自占据稳定位置。"],
+    "donts": ["Don't 使用通用 AI 工具视觉。", "Don't 使用渐变文字、玻璃卡片或无意义科技线条。"]
+  }
+}

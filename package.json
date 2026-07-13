@@ -1,0 +1,52 @@
+{
+  "name": "report-note-agent",
+  "private": true,
+  "version": "0.2.0",
+  "description": "将 PDF / DOCX 行业报告生成、审核、导出并同步为小红书图文笔记的 macOS Agent",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hxy940219220-collab/xhs-report-agent.git"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test:rules": "esbuild scripts/rules-smoke.ts --bundle --platform=node --format=esm --outfile=/tmp/xhs-rules-smoke.mjs && node /tmp/xhs-rules-smoke.mjs",
+    "test:wizard": "node scripts/e2e-wizard.mjs",
+    "test:health": "node scripts/e2e-health-report.mjs",
+    "test:social": "node scripts/e2e-social-persona.mjs",
+    "test:workspace": "node scripts/e2e-workspace.mjs",
+    "test:ai": "node scripts/e2e-ai.mjs",
+    "test:xhs": "node scripts/xhs-automation-smoke.cjs",
+    "test:packaged-ai": "node scripts/e2e-packaged-ai.mjs",
+    "test:packaged-ai-live": "node scripts/e2e-packaged-ai-live.mjs",
+    "test:packaged": "node scripts/e2e-packaged.mjs",
+    "package:mac": "npm run build && node scripts/package-mac.mjs",
+    "package:mac:desktop": "npm run build && node scripts/package-mac.mjs --desktop"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.12.0",
+    "pdfjs-dist": "^5.4.530",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-image-crop": "^11.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.4",
+    "electron": "^43.1.0",
+    "esbuild": "^0.28.1",
+    "playwright-core": "^1.61.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
+  },
+  "main": "electron/main.cjs"
+}
