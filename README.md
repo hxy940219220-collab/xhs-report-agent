@@ -42,7 +42,7 @@ PDF 会按页生成完整图片，可按发布顺序选择最多 12 张报告页
 
 ### 4. AI 接入设置
 
-可选接入兼容 OpenAI Chat Completions 的服务商；先进行最小请求测试，再用模型优化文案，API Key 仅加密保存在本机。
+提高丰富第三方API KEY接入，兼容硅基流动、Deepseek、GLM、Qwen、Kimi、 OpenAI等模型供应商，API Key 仅加密保存在本机。
 
 ![AI 接入设置界面](docs/screenshots/ai-provider-settings.png)
 
