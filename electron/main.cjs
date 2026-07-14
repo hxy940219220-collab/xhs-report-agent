@@ -167,7 +167,7 @@ async function requestChatCompletion({ baseUrl, apiKey, model, messages, tempera
     try {
       const chunk = JSON.parse(data);
       if (chunk?.error) {
-        streamError = String(chunk.error.message || chunk.error.code || "流式响应返回错误").slice(0, 500);
+        streamError = "AI 服务返回错误，请检查模型配置、额度或服务状态";
         streamFatalError = streamError;
         return;
       }
@@ -268,16 +268,16 @@ async function requestChatCompletion({ baseUrl, apiKey, model, messages, tempera
   }
   const payload = (() => { try { return JSON.parse(responseText); } catch { return {}; } })();
   if (!response.ok) {
-    const detail = String(streamError || payload?.error?.message || "").slice(0, 500);
+    const providerError = String(streamError || payload?.error?.message || "");
     const errorCode = String(payload?.error?.code || payload?.error?.type || "");
-    if (response.status === 401 || response.status === 403) throw new Error(`API Key 验证失败（${response.status}）${detail ? `：${detail}` : ""}`);
-    if (response.status === 404 && /model/i.test(`${errorCode} ${detail || ""}`)) throw new Error(`模型不存在或当前 Key 无权使用：${detail || model}`);
-    if (response.status === 404) throw new Error(`接口路径不存在（404），请检查服务商要求的基础地址${detail ? `：${detail}` : ""}`);
-    if (response.status === 400 && /model/i.test(String(detail || ""))) throw new Error(`模型不可用：${detail}`);
-    if (response.status === 429) throw new Error(`请求过于频繁或额度受限（429）${detail ? `：${detail}` : ""}`);
-    if (response.status === 402) throw new Error(`账户余额或额度不足（402）${detail ? `：${detail}` : ""}`);
-    if (response.status >= 500) throw new Error(`服务商暂时不可用（${response.status}）${detail ? `：${detail}` : ""}`);
-    throw new Error(detail || `AI 接口请求失败（${response.status}）`);
+    if (response.status === 401 || response.status === 403) throw new Error(`API Key 验证失败（${response.status}），请检查 Key 是否对应当前服务商`);
+    if (response.status === 404 && /model/i.test(`${errorCode} ${providerError}`)) throw new Error(`模型不存在或当前 Key 无权使用：${model}`);
+    if (response.status === 404) throw new Error("接口路径不存在（404），请检查服务商要求的基础地址");
+    if (response.status === 400 && /model/i.test(providerError)) throw new Error("模型不可用，请检查模型 ID 是否正确");
+    if (response.status === 429) throw new Error("请求过于频繁或额度受限（429）");
+    if (response.status === 402) throw new Error("账户余额或额度不足（402）");
+    if (response.status >= 500) throw new Error(`服务商暂时不可用（${response.status}）`);
+    throw new Error(`AI 接口请求失败（${response.status}），请检查服务商配置或稍后重试`);
   }
   if (streamError) throw new Error(streamError);
   const content = isEventStream ? streamContent : payload?.choices?.[0]?.message?.content;
@@ -410,7 +410,9 @@ function createWindow() {
 
   window.loadFile(path.join(__dirname, "../dist/index.html"));
   window.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith("https://") || url.startsWith("http://")) shell.openExternal(url);
+    try {
+      if (new URL(url).protocol === "https:") shell.openExternal(url);
+    } catch {}
     return { action: "deny" };
   });
   window.webContents.on("will-navigate", (event, url) => {

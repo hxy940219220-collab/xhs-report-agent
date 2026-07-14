@@ -86,6 +86,8 @@ npm run package:mac
 
 输出位于 `release/`。如需同时复制到桌面，显式运行 `npm run package:mac:desktop`；它会覆盖桌面上的同名 App 和 ZIP。当前使用 ad-hoc 签名，未公证的 App 在其他 Mac 上可能触发 Gatekeeper 提示。
 
+当前本地打包产物适用于 Apple Silicon（M 系列）Mac。面向公众发布前还需要 Apple Developer 签名与公证；完整的安全检查、签名与 GitHub Release 清单见 [docs/RELEASING.md](docs/RELEASING.md)。
+
 ## AI 接入与隐私
 
 默认规则版不需要 API Key。启用 AI 优化时，可在 App 内配置兼容 OpenAI Chat Completions 的服务商、地址与模型。
@@ -94,6 +96,7 @@ npm run package:mac
 - 报告内容只会发送到用户主动配置的第三方 AI 服务
 - 仓库不包含任何 API Key、账号 Cookie 或浏览器登录状态
 - 不要把真实密钥写入源码、测试脚本、Issue 或日志
+- 每次公开发布前运行 `npm run test:secrets`；它会扫描已跟踪文件和可达 Git 历史，但不会打印疑似密钥的值
 
 ## 小红书同步边界
 

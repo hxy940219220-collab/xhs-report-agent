@@ -17,6 +17,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test:rules": "esbuild scripts/rules-smoke.ts --bundle --platform=node --format=esm --outfile=/tmp/xhs-rules-smoke.mjs && node /tmp/xhs-rules-smoke.mjs",
+    "test:secrets": "node scripts/check-public-secrets.mjs",
     "test:wizard": "node scripts/e2e-wizard.mjs",
     "test:health": "node scripts/e2e-health-report.mjs",
     "test:social": "node scripts/e2e-social-persona.mjs",
@@ -26,8 +27,9 @@
     "test:packaged-ai": "node scripts/e2e-packaged-ai.mjs",
     "test:packaged-ai-live": "node scripts/e2e-packaged-ai-live.mjs",
     "test:packaged": "node scripts/e2e-packaged.mjs",
-    "package:mac": "npm run build && node scripts/package-mac.mjs",
-    "package:mac:desktop": "npm run build && node scripts/package-mac.mjs --desktop"
+    "check:release": "npm run test:secrets && npm run build && npm run test:rules && npm run test:xhs",
+    "package:mac": "npm run test:secrets && npm run build && node scripts/package-mac.mjs",
+    "package:mac:desktop": "npm run test:secrets && npm run build && node scripts/package-mac.mjs --desktop"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
